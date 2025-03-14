@@ -1,29 +1,73 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>TFG Leandro Calvo Duran</title>
-    <meta charset="utf-8">
-    <meta name="description" content="&lt;model-viewer&gt; template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="./styles.css" rel="stylesheet"/>
-    <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
-    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
-  </head>
-  <body>
-    <!-- <model-viewer> HTML element -->
-    <model-viewer bounds="legacy" enable-pan src="Peluqueria.glb" ar-scale="auto" ar ar-placement="floor" ar-modes="webxr scene-viewer quick-look" camera-controls environment-image="neutral" poster="poster.webp" shadow-intensity="1">
-      <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
-      </div>
-      <button slot="ar-button" id="ar-button">
-          Ver en AR (Augmented Reality)
-      </button>
-      <div id="ar-prompt">
-          <img src="ar_hand_prompt.png">
-      </div>
-    </model-viewer>  
-    <script src="script.js"></script>
-    <!-- Loads <model-viewer> for browsers: -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de privacidad de nuestra aplicación">
+    <title>Política de Privacidad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Política de Privacidad</h1>
+</header>
+
+<section>
+    <h2>Introducción</h2>
+    <p>En nuestra aplicación, nos comprometemos a proteger su privacidad. Esta política explica cómo recopilamos, usamos y compartimos su información personal.</p>
+    
+    <h2>Información que Recopilamos</h2>
+    <p>Recopilamos información personal identificable solo cuando es necesaria para proporcionar nuestros servicios. Esto puede incluir, pero no se limita a:</p>
+    <ul>
+        <li>Nombre y apellidos</li>
+        <li>Dirección de correo electrónico</li>
+        <li>Datos de uso de la aplicación</li>
+    </ul>
+
+    <h2>Uso de la Información</h2>
+    <p>Usamos la información que recopilamos para mejorar la experiencia del usuario, ofrecer soporte y personalizar los servicios. No compartimos su información con terceros sin su consentimiento, salvo en situaciones necesarias por ley.</p>
+
+    <h2>Seguridad</h2>
+    <p>Tomamos medidas razonables para proteger su información personal de accesos no autorizados, alteraciones o destrucción.</p>
+
+    <h2>Cookies</h2>
+    <p>Utilizamos cookies para mejorar la experiencia de navegación. Las cookies son pequeños archivos de texto que se almacenan en su dispositivo.</p>
+
+    <h2>Actualizaciones de la Política</h2>
+    <p>Nos reservamos el derecho de actualizar esta política en cualquier momento. Cualquier cambio se publicará en esta página con la fecha de la última actualización.</p>
+
+    <h2>Contacto</h2>
+    <p>Si tiene alguna pregunta o inquietud sobre nuestra política de privacidad, no dude en ponerse en contacto con nosotros a través del correo electrónico: <a href="mailto:contacto@tudominio.com">contacto@tudominio.com</a>.</p>
+</section>
+
+</body>
 </html>
