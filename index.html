@@ -3,71 +3,1061 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Política de privacidad de nuestra aplicación">
-    <title>Política de Privacidad</title>
+  <title>Leandro Calvo Durán - Portfolio Estelar</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 15px;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(ellipse at center, #0c1445 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+      overflow: hidden;
+      height: 100vh;
+            position: relative;
         }
-        section {
-            padding: 20px;
-            margin: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    /* Estrellas de fondo */
+    .star-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
-        h2 {
-            color: #4CAF50;
+
+        .star {
+            position: absolute;
+      background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+      animation: twinkle 3s infinite alternate;
         }
-        p {
-            font-size: 16px;
+
+        .star:hover {
+      background: #ffd700;
+      box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
+            transform: scale(2);
+        }
+
+    .star.active {
+      background: #ff6b6b;
+      box-shadow: 0 0 30px #ff6b6b, 0 0 60px #ff6b6b;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.5); }
+    }
+
+    /* Navegación estelar */
+    .star-nav {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .star-nav-item {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      cursor: pointer;
+    }
+
+    .star-visual {
+      width: 100%;
+      height: 100%;
+      background: #ffd700;
+      border-radius: 50%;
+      transition: all 0.5s ease;
+      box-shadow: 0 0 20px #ffd700;
+      animation: navStarPulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes navStarPulse {
+      from {
+        transform: scale(1);
+        box-shadow: 0 0 20px #ffd700;
+      }
+      to {
+        transform: scale(1.2);
+        box-shadow: 0 0 30px #ffc300;
+      }
+    }
+
+    .star-nav-item:hover .star-visual {
+      box-shadow: 0 0 35px #fff, 0 0 70px #ffd700;
+      animation-play-state: paused;
+    }
+
+    .star-nav-item.active .star-visual {
+      background: #ff6b6b;
+      box-shadow: 0 0 30px #ff6b6b, 0 0 60px #ff6b6b;
+    }
+
+    .star-label {
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 1; /* Siempre visible */
+      transition: all 0.3s ease;
+      pointer-events: none;
+      transform-origin: bottom center;
+    }
+
+    .star-nav-item:hover .star-label {
+      /* Sin animación de hover para el label */
+    }
+
+    /* Contenido principal */
+        .main-content {
+            position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100vh;
+            display: flex;
+      align-items: center;
+            justify-content: center;
+      pointer-events: none;
+    }
+
+    .section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+            align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.8s ease;
+    }
+
+    .section.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Hace que solo el contenido de la sección activa sea interactivo */
+    .section.active > * {
+      pointer-events: auto;
+    }
+
+    /* Sección de inicio */
+        .hero-section {
+      text-align: center;
+        }
+
+    .hero-name {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+    .hero-title {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+    .hero-subtitle {
+            font-size: 1.1rem;
+            color: #999;
+      max-width: 600px;
             line-height: 1.6;
-        }
+    }
+
+    /* Sección de habilidades */
+    .skills-section {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .skills-constellation-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 70vh;
+      margin-top: 2rem;
+    }
+
+    .skills-constellation {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .skill-item {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .skill-star {
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00aeff;
+      animation: skillStarPulse 2s infinite alternate ease-in-out;
+      transition: all 0.3s ease;
+      margin: 0 auto;
+    }
+
+    .skill-name {
+      color: #ccc;
+      margin-top: 15px;
+      display: block;
+      font-size: 1rem;
+      font-weight: 300;
+      opacity: 0.7;
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+    }
+
+    .skill-item:hover .skill-star {
+      transform: scale(2);
+      box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #ffc300;
+    }
+
+    .skill-item:hover .skill-name {
+      opacity: 1;
+      transform: scale(1);
+      color: #ffd700;
+      text-shadow: 0 0 5px #ffd700;
+    }
+
+    @keyframes skillStarPulse {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.3);
+      }
+    }
+
+    /* Sección profesional */
+    .professional-section {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .professional-constellation-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 70vh;
+      margin-top: 2rem;
+    }
+
+    .professional-constellation {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .constellation-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      stroke: rgba(255, 255, 255, 0.2);
+      stroke-width: 1.5px;
+      stroke-dasharray: 5 5;
+      animation: dash 20s linear infinite;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: 1000;
+      }
+    }
+
+    .experience-point {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+
+    .experience-star {
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #6495ed;
+      animation: skillStarPulse 2.5s infinite alternate ease-in-out;
+      transition: all 0.4s ease;
+      margin: 0 auto;
+    }
+
+    .experience-details {
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      text-align: center;
+      color: #ccc;
+      opacity: 0.7;
+      transition: all 0.4s ease;
+    }
+    
+    .experience-point:hover .experience-star {
+      transform: scale(2);
+      box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #ffd700;
+    }
+
+    .experience-point:hover .experience-details {
+      opacity: 1;
+      transform: translateX(-50%) translateY(5px);
+      color: #fff;
+    }
+
+    .experience-title {
+      font-size: 1rem;
+            font-weight: 600;
+      color: #ffd700;
+      margin-bottom: 0.2rem;
+    }
+    
+    .experience-company {
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    /* Sección Contacto */
+    .contact-section {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .contact-constellation-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 70vh;
+      margin-top: 2rem;
+    }
+    
+    .contact-constellation {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .contact-item {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .contact-star {
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00aeff;
+      animation: skillStarPulse 2.2s infinite alternate ease-in-out;
+      transition: all 0.3s ease;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 70px;
+      height: 70px;
+      margin-left: -35px;
+      margin-top: -35px;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: spin 20s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .contact-name {
+      color: #ccc;
+      margin-top: 15px;
+      display: block;
+      font-size: 1rem;
+      font-weight: 300;
+      opacity: 0.7;
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover .contact-star {
+      transform: scale(2);
+      box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #ffc300;
+    }
+
+    .contact-item:hover .contact-name {
+      opacity: 1;
+      transform: scale(1);
+      color: #ffd700;
+      text-shadow: 0 0 5px #ffd700;
+    }
+
+    /* Responsive */
+        @media (max-width: 768px) {
+      .hero-name {
+                font-size: 2.5rem;
+        opacity: 1;
+        width: 100%;
+        margin-top: 1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .skills-constellation-container {
+        padding: 2rem 1.5rem;
+      }
+      
+      .contact-constellation-container {
+        height: auto;
+      }
+      .contact-constellation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+      }
+      .contact-item {
+        position: static;
+        transform: none;
+      }
+    }
+
+    /* Email Banner */
+    .email-banner {
+      position: absolute;
+      top: 47%;
+      left: 67.5%;
+      transform: translateX(-50%);
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 0.7rem 1rem;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 10;
+      white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .email-banner.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(10px);
+    }
+
+    .email-banner::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid rgba(26, 26, 46, 0.95);
+    }
+
+    .copy-btn {
+      background: #34d399;
+      color: #000;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: #2aa779;
+      transform: scale(1.05);
+    }
+
+    .copy-btn.copied {
+      background: #6495ed;
+    }
+
+    /* About Banner */
+    .about-banner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 0;
+      color: #fff;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      max-width: 90vw;
+      max-height: 80vh;
+      overflow: hidden;
+    }
+
+    .about-banner.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .about-banner-content {
+      padding: 2rem;
+      max-height: 70vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 215, 0, 0.5) transparent;
+    }
+
+    .about-banner-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .about-banner-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .about-banner-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 215, 0, 0.5);
+      border-radius: 3px;
+    }
+
+    .about-banner-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffd700;
+      text-align: center;
+    }
+
+    .about-banner-content p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .about-stats-mini {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .about-stats-mini span {
+      background: rgba(255, 215, 0, 0.1);
+      color: #ffd700;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .about-banner {
+        max-width: 95vw;
+        max-height: 85vh;
+      }
+      
+      .about-banner-content {
+        padding: 1.5rem;
+        max-height: 75vh;
+      }
+      
+      .about-banner-content h3 {
+        font-size: 1.3rem;
+      }
+      
+      .about-banner-content p {
+        font-size: 0.85rem;
+      }
+      
+      .about-stats-mini {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      
+      .about-stats-mini span {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Política de Privacidad</h1>
-</header>
+<div class="star-field" id="starField"></div>
 
-<section>
-    <h2>Introducción</h2>
-    <p>En nuestra aplicación, nos comprometemos a proteger su privacidad. Esta política explica cómo recopilamos, usamos y compartimos su información personal.</p>
+<div class="star-nav" id="starNav">
+  <div class="star-nav-item" data-section="hero" style="top: 15%; left: 10%;">
+    <div class="star-visual"></div>
+    <div class="star-label">Home</div>
+  </div>
+  <div class="star-nav-item" data-section="skills" style="top: 30%; left: 88%;">
+    <div class="star-visual"></div>
+    <div class="star-label">Skills</div>
+  </div>
+  <div class="star-nav-item" data-section="professional" style="top: 80%; left: 8%;">
+    <div class="star-visual"></div>
+    <div class="star-label">Experience</div>
+  </div>
+  <div class="star-nav-item" data-section="contact" style="top: 70%; left: 85%;">
+    <div class="star-visual"></div>
+    <div class="star-label">Contact</div>
+  </div>
+</div>
+
+<div class="main-content">
+  <!-- Sección Hero -->
+  <div class="section hero-section active" id="hero">
+    <div>
+      <h1 class="hero-name">Leandro Calvo Durán</h1>
+      <h2 class="hero-title">Computer Engineer - University of Seville</h2>
+      <p class="hero-subtitle">
+         Click on the stars to navigate through my CV.
+      </p>
+    </div>
+  </div>
+
+  <!-- Sección Habilidades -->
+  <div class="section skills-section" id="skills">
+    <div class="skills-constellation-container">
+      <div class="skills-constellation">
+        <!-- Skill: AWS -->
+        <div class="skill-item" style="top: 25%; left: 20%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">AWS</span>
+        </div>
+        <!-- Skill: Amazon Redshift -->
+        <div class="skill-item" style="top: 35%; left: 35%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">Amazon Redshift</span>
+        </div>
+        <!-- Skill: PowerBI -->
+        <div class="skill-item" style="top: 20%; left: 50%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">PowerBI</span>
+        </div>
+        <!-- Skill: PostgreSQL -->
+        <div class="skill-item" style="top: 45%; left: 60%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">PostgreSQL</span>
+        </div>
+        <!-- Skill: MySQL -->
+        <div class="skill-item" style="top: 60%; left: 45%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">MySQL</span>
+        </div>
+        <!-- Skill: Qlik -->
+        <div class="skill-item" style="top: 75%; left: 30%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">Qlik</span>
+        </div>
+        <!-- Skill: Python -->
+        <div class="skill-item" style="top: 55%; left: 20%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">Python</span>
+        </div>
+        <!-- Skill: Spark -->
+        <div class="skill-item" style="top: 70%; left: 70%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">Spark</span>
+        </div>
+        <!-- Skill: Javascript -->
+        <div class="skill-item" style="top: 50%; left: 85%;">
+          <div class="skill-star"></div>
+          <span class="skill-name">Javascript</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección Profesional -->
+  <div class="section professional-section" id="professional">
+    <div class="professional-constellation-container">
+      
+      <div class="professional-constellation">
+        <!-- Connecting Lines -->
+        <svg class="constellation-lines" width="100%" height="100%">
+          <line x1="85%" y1="30%" x2="65%" y2="70%" />
+          <line x1="65%" y1="70%" x2="40%" y2="40%" />
+          <line x1="40%" y1="40%" x2="15%" y2="60%" />
+        </svg>
+
+        <!-- Experience 1: Newest -->
+        <div class="experience-point" style="top: 30%; left: 85%;">
+          <div class="experience-star"></div>
+          <div class="experience-details">
+            <p class="experience-company">Endesa • 2025 - Currently</p>
+            <h3 class="experience-title">Business Operational Support</h3>
+          </div>
+        </div>
+
+        <!-- Experience 2: -->
+        <div class="experience-point" style="top: 70%; left: 65%;">
+          <div class="experience-star"></div>
+          <div class="experience-details">
+            <p class="experience-company">TRAMAS+ • 2025</p>
+            <h3 class="experience-title">Data Engineer</h3>
+          </div>
+        </div>
+
+        <!-- Experience 3: -->
+        <div class="experience-point" style="top: 40%; left: 40%;">
+          <div class="experience-star"></div>
+          <div class="experience-details">
+            <p class="experience-company">Endesa • 2023 - 2024</p>
+            <h3 class="experience-title">Data Analyst</h3>
+          </div>
+        </div>
+        
+        <!-- Experience 4: Oldest -->
+        <div class="experience-point" style="top: 60%; left: 15%;">
+          <div class="experience-star"></div>
+          <div class="experience-details">
+            <p class="experience-company">Copyright (CCC) • 2022 - 2023</p>
+            <h3 class="experience-title">Frontend Developer</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección Contacto -->
+  <div class="section contact-section" id="contact">
+    <div class="contact-constellation-container">
+      <div class="contact-constellation">
+        <!-- Contact: LinkedIn -->
+        <a href="https://www.linkedin.com/in/leandro-calvo-duran/" target="_blank" class="contact-item" style="top: 25%; left: 20%;">
+          <div class="contact-star">
+            <div class="orbit"></div>
+          </div>
+          <span class="contact-name">LinkedIn</span>
+        </a>
+        <!-- Contact: Email -->
+        <a href="#" id="emailContact" class="contact-item" style="top: 25%; left: 80%;">
+          <div class="contact-star">
+            <div class="orbit"></div>
+          </div>
+          <span class="contact-name">Email</span>
+        </a>
+        <!-- Contact: GitHub -->
+        <a href="https://github.com/leanxp" target="_blank" class="contact-item" style="top: 50%; left: 35%;">
+          <div class="contact-star">
+            <div class="orbit"></div>
+          </div>
+          <span class="contact-name">GitHub</span>
+        </a>
+        <!-- Contact: PDF -->
+        <a href="https://drive.google.com/file/d/1VlEePXbV_9Zhg3u3Y3xTceQFYAQ8iJki/view?usp=sharing" target="_blank" class="contact-item" style="top: 50%; left: 65%;">
+          <div class="contact-star">
+            <div class="orbit"></div>
+          </div>
+          <span class="contact-name">PDF</span>
+        </a>
+        <!-- Contact: About -->
+        <a href="#" id="aboutContact" class="contact-item" style="top: 75%; left: 50%;">
+          <div class="contact-star">
+            <div class="orbit"></div>
+          </div>
+          <span class="contact-name">About</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email Banner/Modal -->
+<div class="email-banner" id="emailBanner">
+  <span>leandrocalvoduran@gmail.com</span>
+  <button class="copy-btn" id="copyEmailBtn">Copy</button>
+</div>
+
+<!-- About Banner/Modal -->
+<div class="about-banner" id="aboutBanner">
+  <div class="about-banner-content">
+    <h3>About Me</h3>
+    <p>I am a passionate Computer Engineer from the University of Seville, specializing in data engineering and business intelligence. With a strong foundation in both technical and analytical skills, I thrive on transforming complex data into actionable insights that drive business decisions.</p>
+    <p>My journey in technology began with frontend development, where I learned the importance of user experience and clean code. This foundation has been invaluable as I've evolved into a Data Engineer and Business Operational Support professional.</p>
+    <div class="about-stats-mini">
+      <span>3+ Years Experience</span>
+      <span>10+ Technologies</span>
+      <span>4 Companies</span>
+    </div>
+  </div>
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Crear estrellas de fondo
+function createStarField() {
+  const starField = document.getElementById('starField');
+  const numberOfStars = 200;
+        
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+    // Posición aleatoria
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            
+    // Tamaño aleatorio
+            const size = Math.random() * 3 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            
+    // Opacidad aleatoria
+            star.style.opacity = Math.random() * 0.8 + 0.2;
+            
+    // Animación de parpadeo aleatoria
+    star.style.animationDelay = Math.random() * 3 + 's';
     
-    <h2>Información que Recopilamos</h2>
-    <p>Recopilamos información personal identificable solo cuando es necesaria para proporcionar nuestros servicios. Esto puede incluir, pero no se limita a:</p>
-    <ul>
-        <li>Nombre y apellidos</li>
-        <li>Dirección de correo electrónico</li>
-        <li>Datos de uso de la aplicación</li>
-    </ul>
+    starField.appendChild(star);
+  }
+  
+  // Animación de las estrellas de fondo después de crearlas
+  gsap.to('.star', {
+    y: -20,
+    duration: 20,
+    repeat: -1,
+    ease: "none",
+    stagger: {
+      amount: 20,
+      from: "random"
+    }
+  });
+}
 
-    <h2>Uso de la Información</h2>
-    <p>Usamos la información que recopilamos para mejorar la experiencia del usuario, ofrecer soporte y personalizar los servicios. No compartimos su información con terceros sin su consentimiento, salvo en situaciones necesarias por ley.</p>
+// Navegación entre secciones
+let currentSection = 'hero';
+let isAnimating = false;
 
-    <h2>Seguridad</h2>
-    <p>Tomamos medidas razonables para proteger su información personal de accesos no autorizados, alteraciones o destrucción.</p>
+function showSection(sectionId) {
+    if (isAnimating || sectionId === currentSection) return;
+    isAnimating = true;
 
-    <h2>Cookies</h2>
-    <p>Utilizamos cookies para mejorar la experiencia de navegación. Las cookies son pequeños archivos de texto que se almacenan en su dispositivo.</p>
+    const currentSectionEl = document.querySelector(`#${currentSection}`);
+    const newSectionEl = document.querySelector(`#${sectionId}`);
+    const starField = document.getElementById('starField');
 
-    <h2>Actualizaciones de la Política</h2>
-    <p>Nos reservamos el derecho de actualizar esta política en cualquier momento. Cualquier cambio se publicará en esta página con la fecha de la última actualización.</p>
+    // Update nav stars immediately for a responsive feel
+    document.querySelectorAll('.star-nav-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.section === sectionId);
+    });
 
-    <h2>Contacto</h2>
-    <p>Si tiene alguna pregunta o inquietud sobre nuestra política de privacidad, no dude en ponerse en contacto con nosotros a través del correo electrónico: <a href="mailto:contacto@tudominio.com">contacto@tudominio.com</a>.</p>
-</section>
+    const tl = gsap.timeline({
+        onComplete: () => {
+            currentSectionEl.classList.remove('active');
+            newSectionEl.classList.add('active');
+            currentSection = sectionId;
+            isAnimating = false;
+        }
+    });
+
+    // --- EXIT ANIMATION ---
+    if (currentSection === 'hero') {
+        // Fly through the hero text and stars
+        tl.to(currentSectionEl, {
+            opacity: 0,
+            scale: 1.5,
+            duration: 0.8,
+            ease: "power2.in"
+        })
+        .to(starField, {
+            scale: 1.2,
+            duration: 0.8,
+            ease: "power2.in"
+        }, "<");
+    } else {
+        // Default exit for other sections
+        tl.to(currentSectionEl, {
+            opacity: 0,
+            scale: 0.9,
+            duration: 0.5,
+            ease: "power2.in"
+        });
+    }
+
+    // --- ENTRY ANIMATION ---
+    if (sectionId === 'hero') {
+        // Fly back to the hero view
+        gsap.set(newSectionEl, { opacity: 0, scale: 0.8 });
+        tl.to(newSectionEl, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out"
+        })
+        .to(starField, {
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out"
+        }, "<");
+    } else {
+        // Default entry for other sections
+        gsap.set(newSectionEl, { opacity: 0, scale: 0.9, y: 50 });
+        tl.to(newSectionEl, {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+    }
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', function() {
+  createStarField();
+  
+  // Navegación por estrellas
+  document.querySelectorAll('.star-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const sectionId = this.getAttribute('data-section');
+      showSection(sectionId);
+    });
+  });
+  
+  // Animación inicial de las estrellas de navegación
+  gsap.fromTo('.star-nav-item', 
+    { scale: 0, opacity: 0 },
+    { scale: 1, opacity: 1, duration: 1, stagger: 0.2, ease: "back.out(1.7)" }
+  );
+
+  // Email Banner Logic
+  const emailContact = document.getElementById('emailContact');
+  const emailBanner = document.getElementById('emailBanner');
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+
+  emailContact.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      emailBanner.classList.toggle('show');
+  });
+
+  // About Banner Logic
+  const aboutContact = document.getElementById('aboutContact');
+  const aboutBanner = document.getElementById('aboutBanner');
+
+  aboutContact.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      aboutBanner.classList.toggle('show');
+  });
+
+  // Copy email functionality
+  copyEmailBtn.addEventListener('click', () => {
+      const emailAddress = 'leandrocalvoduran@gmail.com';
+      navigator.clipboard.writeText(emailAddress).then(() => {
+          copyEmailBtn.innerText = '¡Copied!';
+          copyEmailBtn.classList.add('copied');
+          setTimeout(() => {
+              copyEmailBtn.innerText = 'Copy';
+              copyEmailBtn.classList.remove('copied');
+          }, 2000);
+      }).catch(err => {
+          console.error('Failed to copy text: ', err);
+      });
+  });
+
+  // Hide banners when clicking elsewhere
+  document.addEventListener('click', (e) => {
+      if (!emailContact.contains(e.target) && !emailBanner.contains(e.target)) {
+          emailBanner.classList.remove('show');
+      }
+      if (!aboutContact.contains(e.target) && !aboutBanner.contains(e.target)) {
+          aboutBanner.classList.remove('show');
+      }
+  });
+});
+</script>
 
 </body>
 </html>
