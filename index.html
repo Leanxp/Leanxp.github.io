@@ -68,7 +68,8 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      z-index: 2;
+      z-index: 100 !important;
+      pointer-events: none !important;
     }
 
     .star-nav-item {
@@ -76,6 +77,8 @@
       width: 12px;
       height: 12px;
       cursor: pointer;
+      z-index: 101 !important;
+      pointer-events: auto !important;
     }
 
     .star-visual {
@@ -134,7 +137,7 @@
     /* Contenido principal */
         .main-content {
             position: relative;
-      z-index: 3;
+      z-index: 1 !important;
       width: 100%;
       height: 100vh;
             display: flex;
@@ -478,38 +481,38 @@
         max-width: 90%;
       }
 
-      /* Navigation Stars - Specific positions for tablets */
+      /* Navigation Stars - Reposition for mobile */
       .star-nav-item {
-        width: 16px;
-        height: 16px;
-        z-index: 1000;
+        width: 18px;
+        height: 18px;
+        z-index: 101 !important;
+        pointer-events: auto !important;
       }
 
       .star-nav-item[data-section="hero"] {
-        top: 5% !important;
-        left: 8% !important;
+        top: 8% !important;
+        left: 15% !important;
       }
 
       .star-nav-item[data-section="skills"] {
-        top: 5% !important;
-        left: 90% !important;
+        top: 25% !important;
+        left: 82% !important;
       }
 
       .star-nav-item[data-section="professional"] {
-        top: 90% !important;
-        left: 8% !important;
+        top: 78% !important;
+        left: 12% !important;
       }
 
       .star-nav-item[data-section="contact"] {
-        top: 90% !important;
-        left: 90% !important;
+        top: 88% !important;
+        left: 78% !important;
       }
 
       .star-label {
         font-size: 11px;
         padding: 4px 8px;
         top: -30px;
-        z-index: 1001;
       }
 
       /* Skills Section */
@@ -604,10 +607,10 @@
       }
     }
 
-    /* Medium phones (iPhone XR, etc.) */
-    @media (max-width: 414px) {
+    /* Extra small devices (iPhone SE, etc.) */
+    @media (max-width: 375px) {
       .hero-name {
-        font-size: 1.9rem;
+        font-size: 1.8rem;
       }
       
       .hero-title {
@@ -615,101 +618,17 @@
       }
       
       .hero-subtitle {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
       }
 
-      /* Navigation Stars - Specific positions for medium phones */
       .star-nav-item {
-        width: 15px;
-        height: 15px;
-        z-index: 1000;
-      }
-
-      .star-nav-item[data-section="hero"] {
-        top: 3% !important;
-        left: 5% !important;
-      }
-
-      .star-nav-item[data-section="skills"] {
-        top: 3% !important;
-        left: 92% !important;
-      }
-
-      .star-nav-item[data-section="professional"] {
-        top: 92% !important;
-        left: 5% !important;
-      }
-
-      .star-nav-item[data-section="contact"] {
-        top: 92% !important;
-        left: 92% !important;
+        width: 14px;
+        height: 14px;
       }
 
       .star-label {
         font-size: 10px;
         padding: 3px 6px;
-        top: -25px;
-      }
-
-      .contact-constellation {
-        gap: 1.8rem;
-      }
-
-      .contact-star {
-        width: 11px;
-        height: 11px;
-      }
-
-      .contact-name {
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Small phones (iPhone SE, etc.) */
-    @media (max-width: 375px) {
-      .hero-name {
-        font-size: 1.7rem;
-      }
-      
-      .hero-title {
-        font-size: 0.9rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 0.8rem;
-      }
-
-      /* Navigation Stars - Specific positions for small phones */
-      .star-nav-item {
-        width: 14px;
-        height: 14px;
-        z-index: 1000;
-      }
-
-      .star-nav-item[data-section="hero"] {
-        top: 2% !important;
-        left: 3% !important;
-      }
-
-      .star-nav-item[data-section="skills"] {
-        top: 2% !important;
-        left: 94% !important;
-      }
-
-      .star-nav-item[data-section="professional"] {
-        top: 94% !important;
-        left: 3% !important;
-      }
-
-      .star-nav-item[data-section="contact"] {
-        top: 94% !important;
-        left: 94% !important;
-      }
-
-      .star-label {
-        font-size: 9px;
-        padding: 2px 5px;
-        top: -22px;
       }
 
       .contact-constellation {
@@ -723,67 +642,6 @@
 
       .contact-name {
         font-size: 0.8rem;
-      }
-    }
-
-    /* Extra small phones */
-    @media (max-width: 320px) {
-      .hero-name {
-        font-size: 1.5rem;
-      }
-      
-      .hero-title {
-        font-size: 0.8rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 0.75rem;
-      }
-
-      /* Navigation Stars - Specific positions for extra small phones */
-      .star-nav-item {
-        width: 13px;
-        height: 13px;
-        z-index: 1000;
-      }
-
-      .star-nav-item[data-section="hero"] {
-        top: 1% !important;
-        left: 2% !important;
-      }
-
-      .star-nav-item[data-section="skills"] {
-        top: 1% !important;
-        left: 95% !important;
-      }
-
-      .star-nav-item[data-section="professional"] {
-        top: 95% !important;
-        left: 2% !important;
-      }
-
-      .star-nav-item[data-section="contact"] {
-        top: 95% !important;
-        left: 95% !important;
-      }
-
-      .star-label {
-        font-size: 8px;
-        padding: 2px 4px;
-        top: -20px;
-      }
-
-      .contact-constellation {
-        gap: 1.2rem;
-      }
-
-      .contact-star {
-        width: 9px;
-        height: 9px;
-      }
-
-      .contact-name {
-        font-size: 0.75rem;
       }
     }
 
@@ -801,27 +659,6 @@
       
       .hero-subtitle {
         font-size: 0.8rem;
-      }
-
-      /* Navigation Stars - Specific positions for landscape */
-      .star-nav-item[data-section="hero"] {
-        top: 8% !important;
-        left: 5% !important;
-      }
-
-      .star-nav-item[data-section="skills"] {
-        top: 8% !important;
-        left: 95% !important;
-      }
-
-      .star-nav-item[data-section="professional"] {
-        top: 85% !important;
-        left: 5% !important;
-      }
-
-      .star-nav-item[data-section="contact"] {
-        top: 85% !important;
-        left: 95% !important;
       }
 
       .skills-constellation-container,
@@ -1017,6 +854,81 @@
       .about-stats-mini span {
         font-size: 0.75rem;
         padding: 0.4rem 0.8rem;
+      }
+    }
+
+    @media (max-width: 1354px), (max-height: 945px) {
+      .hero-name {
+        font-size: 2.2rem;
+        margin-bottom: 0.7rem;
+      }
+      .hero-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+      .main-content {
+        padding: 0.5rem;
+      }
+      .star-nav-item {
+        width: 18px;
+        height: 18px;
+      }
+      .star-label {
+        font-size: 13px;
+        padding: 6px 12px;
+        top: -32px;
+      }
+      .skills-constellation-container,
+      .professional-constellation-container {
+        max-width: 98vw;
+        height: 70vh;
+        padding: 1.5rem 1rem;
+      }
+      .skill-item, .experience-point {
+        transform: scale(0.9);
+      }
+      .skill-name, .experience-title {
+        font-size: 0.95rem;
+      }
+      .experience-details {
+        width: 220px;
+        font-size: 0.95rem;
+      }
+      .contact-constellation-container {
+        max-width: 98vw;
+        padding: 2rem 1rem;
+      }
+      .contact-star {
+        width: 13px;
+        height: 13px;
+      }
+      .contact-name {
+        font-size: 1rem;
+      }
+      /* Reposiciona las estrellas de navegación para evitar solapamientos */
+      .star-nav-item[data-section="hero"] {
+        top: 12% !important;
+        left: 13% !important;
+      }
+      .star-nav-item[data-section="skills"] {
+        top: 18% !important;
+        left: 80% !important;
+      }
+      .star-nav-item[data-section="professional"] {
+        top: 78% !important;
+        left: 18% !important;
+      }
+      .star-nav-item[data-section="contact"] {
+        top: 85% !important;
+        left: 75% !important;
+      }
+      /* Contact stars más separadas */
+      .contact-item {
+        margin-bottom: 1.2rem;
       }
     }
     </style>
