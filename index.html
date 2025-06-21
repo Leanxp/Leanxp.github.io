@@ -63,6 +63,188 @@
       50% { transform: scale(1.5); }
     }
 
+    /* Efectos de partículas y ondas de energía */
+    .light-particle {
+      box-shadow: 0 0 10px #ffd700, 0 0 20px #ff6b6b;
+      animation: particleGlow 1.5s ease-out;
+    }
+
+    .hover-particle {
+      box-shadow: 0 0 5px #ffd700;
+      animation: hoverGlow 0.8s ease-out;
+    }
+
+    .energy-wave {
+      box-shadow: 0 0 15px #ffd700, inset 0 0 15px rgba(255, 215, 0, 0.3);
+      animation: waveGlow 1.2s ease-out;
+    }
+
+    @keyframes particleGlow {
+      0% { 
+        box-shadow: 0 0 20px #ffd700, 0 0 40px #ff6b6b;
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 30px #ffd700, 0 0 60px #ff6b6b;
+        transform: scale(1.5);
+      }
+      100% {
+        box-shadow: 0 0 5px #ffd700, 0 0 10px #ff6b6b;
+        transform: scale(0.5);
+      }
+    }
+
+    @keyframes hoverGlow {
+      0% { 
+        box-shadow: 0 0 10px #ffd700;
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 20px #ffd700;
+        transform: scale(1.2);
+      }
+      100% {
+        box-shadow: 0 0 5px #ffd700;
+        transform: scale(0.8);
+      }
+    }
+
+    @keyframes waveGlow {
+      0% { 
+        box-shadow: 0 0 20px #ffd700, inset 0 0 20px rgba(255, 215, 0, 0.5);
+        border-color: #ffd700;
+      }
+      50% {
+        box-shadow: 0 0 40px #ffd700, inset 0 0 40px rgba(255, 215, 0, 0.3);
+        border-color: #ff6b6b;
+      }
+      100% {
+        box-shadow: 0 0 5px #ffd700, inset 0 0 5px rgba(255, 215, 0, 0.1);
+        border-color: rgba(255, 215, 0, 0.3);
+      }
+    }
+
+    /* Efectos de warp speed */
+    .warp-line {
+      animation: warpLineGlow 0.8s ease-out;
+    }
+
+    .warp-star {
+      animation: warpStarGlow 0.6s ease-out;
+    }
+
+    .light-speed-line {
+      animation: lightSpeedLineGlow 1.2s ease-out;
+    }
+
+    .light-speed-star {
+      animation: lightSpeedStarGlow 1s ease-out;
+    }
+
+    @keyframes warpLineGlow {
+      0% { 
+        box-shadow: 0 0 5px #ffd700;
+        opacity: 0;
+      }
+      50% {
+        box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
+        opacity: 1;
+      }
+      100% {
+        box-shadow: 0 0 5px #ffd700;
+        opacity: 0;
+      }
+    }
+
+    @keyframes warpStarGlow {
+      0% { 
+        box-shadow: 0 0 5px #fff;
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        box-shadow: 0 0 20px #fff, 0 0 40px #ffd700;
+        opacity: 1;
+        transform: scale(2);
+      }
+      100% {
+        box-shadow: 0 0 5px #fff;
+        opacity: 0;
+        transform: scale(0.5);
+      }
+    }
+
+    @keyframes lightSpeedLineGlow {
+      0% { 
+        box-shadow: 0 0 3px rgba(255, 215, 0, 0.3);
+        opacity: 0;
+      }
+      50% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        opacity: 1;
+      }
+      100% {
+        box-shadow: 0 0 3px rgba(255, 215, 0, 0.2);
+        opacity: 0;
+      }
+    }
+
+    @keyframes lightSpeedStarGlow {
+      0% { 
+        box-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      50% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        opacity: 1;
+        transform: scale(1.5);
+      }
+      100% {
+        box-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+
+    /* Efectos de carga */
+    .loading-circle {
+      box-shadow: 0 0 20px #ffd700, inset 0 0 20px rgba(255, 215, 0, 0.1);
+      animation: loadingGlow 0.8s ease-out;
+    }
+
+    .loading-ring {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      animation: ringGlow 0.8s ease-out;
+    }
+
+    @keyframes loadingGlow {
+      0% { 
+        box-shadow: 0 0 10px #ffd700, inset 0 0 10px rgba(255, 215, 0, 0.1);
+      }
+      50% {
+        box-shadow: 0 0 30px #ffd700, inset 0 0 30px rgba(255, 215, 0, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 10px #ffd700, inset 0 0 10px rgba(255, 215, 0, 0.1);
+      }
+    }
+
+    @keyframes ringGlow {
+      0% { 
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        border-color: rgba(255, 215, 0, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        border-color: rgba(255, 215, 0, 0.8);
+      }
+      100% {
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        border-color: rgba(255, 215, 0, 0.3);
+      }
+    }
+
     /* Navegación estelar */
     .star-nav {
       position: absolute;
@@ -962,9 +1144,6 @@
     <div>
       <h1 class="hero-name">Leandro Calvo Durán</h1>
       <h2 class="hero-title">Computer Engineer - University of Seville</h2>
-      <p class="hero-subtitle">
-         Click on the stars to navigate through my CV.
-      </p>
     </div>
   </div>
 
@@ -1013,7 +1192,7 @@
           <span class="skill-name">Spark</span>
         </div>
         <!-- Skill: Javascript -->
-        <div class="skill-item" style="top: 50%; left: 85%;">
+        <div class="skill-item" style="top: 50%; left: 75%;">
           <div class="skill-star"></div>
           <span class="skill-name">Javascript</span>
         </div>
@@ -1046,7 +1225,7 @@
         <div class="experience-point" style="top: 70%; left: 65%;">
           <div class="experience-star"></div>
           <div class="experience-details">
-            <p class="experience-company">TRAMAS+ • 2025</p>
+            <p class="experience-company">TRAMAS • 2025</p>
             <h3 class="experience-title">Data Engineer</h3>
           </div>
         </div>
@@ -1179,7 +1358,7 @@ function createStarField() {
   });
 }
 
-// Navegación entre secciones
+// Navegación entre secciones con animaciones galácticas
 let currentSection = 'hero';
 let isAnimating = false;
 
@@ -1190,11 +1369,15 @@ function showSection(sectionId) {
     const currentSectionEl = document.querySelector(`#${currentSection}`);
     const newSectionEl = document.querySelector(`#${sectionId}`);
     const starField = document.getElementById('starField');
+    const clickedStar = document.querySelector(`[data-section="${sectionId}"]`);
 
     // Update nav stars immediately for a responsive feel
     document.querySelectorAll('.star-nav-item').forEach(item => {
         item.classList.toggle('active', item.dataset.section === sectionId);
     });
+
+    // Crear efecto de partículas de luz desde la estrella clickeada
+    createLightParticles(clickedStar);
 
     const tl = gsap.timeline({
         onComplete: () => {
@@ -1202,57 +1385,307 @@ function showSection(sectionId) {
             newSectionEl.classList.add('active');
             currentSection = sectionId;
             isAnimating = false;
+            
+            // Limpiar partículas después de la animación
+            setTimeout(() => {
+                const particles = document.querySelectorAll('.light-particle');
+                particles.forEach(particle => particle.remove());
+            }, 1000);
         }
     });
 
-    // --- EXIT ANIMATION ---
+    // --- ANIMACIÓN DE SALIDA ESPECTACULAR ---
     if (currentSection === 'hero') {
-        // Fly through the hero text and stars
+        // Efecto de viaje espacial desde el hero - mantener fondo visible
         tl.to(currentSectionEl, {
             opacity: 0,
-            scale: 1.5,
+            scale: 2.5,
+            rotation: 360,
+            duration: 1.2,
+            ease: "power2.in"
+        })
+        .to(starField, {
+            scale: 1.5, // Más conservador para mantener visibilidad
+            rotation: 45, // Rotación más sutil
+            duration: 1.2,
+            ease: "power2.in"
+        }, "<")
+        .to('.star', {
+            opacity: 0.5, // Mantener más visibilidad
+            scale: 0.7, // Escala más conservadora
+            duration: 0.8,
+            ease: "power2.in",
+            stagger: 0.01
+        }, "<0.4");
+        
+        // Efecto de velocidad de luz que preserva el fondo
+        createLightSpeedEffect();
+    } else {
+        // Efecto de desvanecimiento galáctico para otras secciones
+        tl.to(currentSectionEl, {
+            opacity: 0,
+            scale: 0.3,
+            rotation: -45,
             duration: 0.8,
             ease: "power2.in"
         })
         .to(starField, {
-            scale: 1.2,
+            scale: 1.1, // Muy sutil para mantener fondo
             duration: 0.8,
             ease: "power2.in"
         }, "<");
-    } else {
-        // Default exit for other sections
-        tl.to(currentSectionEl, {
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.5,
-            ease: "power2.in"
-        });
     }
 
-    // --- ENTRY ANIMATION ---
+    // Efecto de warp speed
+    createWarpSpeedEffect();
+
+    // --- ANIMACIÓN DE ENTRADA ESPECTACULAR ---
     if (sectionId === 'hero') {
-        // Fly back to the hero view
-        gsap.set(newSectionEl, { opacity: 0, scale: 0.8 });
+        // Regreso épico al hero - restaurar fondo gradualmente
+        gsap.set(newSectionEl, { opacity: 0, scale: 0.1, rotation: -360 });
+        gsap.set(starField, { scale: 0.9, rotation: -45 }); // Mantener más visibilidad
+        
         tl.to(newSectionEl, {
             opacity: 1,
             scale: 1,
-            duration: 0.8,
-            ease: "power2.out"
+            rotation: 0,
+            duration: 1.2,
+            ease: "back.out(1.7)"
         })
         .to(starField, {
             scale: 1,
-            duration: 0.8,
-            ease: "power2.out"
-        }, "<");
+            rotation: 0,
+            duration: 1.2,
+            ease: "back.out(1.7)"
+        }, "<")
+        .to('.star', {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: 0.02
+        }, "<0.3");
     } else {
-        // Default entry for other sections
-        gsap.set(newSectionEl, { opacity: 0, scale: 0.9, y: 50 });
+        // Entrada galáctica para otras secciones
+        gsap.set(newSectionEl, { opacity: 0, scale: 0.1, y: 100, rotation: 45 });
+        
         tl.to(newSectionEl, {
             opacity: 1,
             scale: 1,
             y: 0,
+            rotation: 0,
+            duration: 1,
+            ease: "back.out(1.4)"
+        })
+        .to(starField, {
+            scale: 1,
+            duration: 1,
+            ease: "back.out(1.4)"
+        }, "<");
+    }
+
+    // Efecto de ondas de energía
+    createEnergyWaves(clickedStar);
+}
+
+// Función para crear efecto de warp speed
+function createWarpSpeedEffect() {
+    // Crear líneas de velocidad
+    for (let i = 0; i < 20; i++) {
+        const line = document.createElement('div');
+        line.className = 'warp-line';
+        line.style.cssText = `
+            position: fixed;
+            width: 2px;
+            height: 100vh;
+            background: linear-gradient(to bottom, transparent, #ffd700, transparent);
+            left: ${Math.random() * 100}%;
+            top: -100vh;
+            pointer-events: none;
+            z-index: 998;
+            opacity: 0;
+        `;
+        
+        document.body.appendChild(line);
+        
+        // Animación de la línea de warp
+        gsap.to(line, {
+            top: '100vh',
+            opacity: 1,
             duration: 0.8,
-            ease: "power2.out"
+            ease: "power2.out",
+            delay: Math.random() * 0.5,
+            onComplete: () => line.remove()
+        });
+    }
+    
+    // Crear estrellas que pasan rápidamente
+    for (let i = 0; i < 30; i++) {
+        const star = document.createElement('div');
+        star.className = 'warp-star';
+        star.style.cssText = `
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            pointer-events: none;
+            z-index: 997;
+            opacity: 0;
+            box-shadow: 0 0 10px #fff;
+        `;
+        
+        document.body.appendChild(star);
+        
+        // Animación de la estrella de warp
+        gsap.to(star, {
+            x: (Math.random() - 0.5) * 200,
+            y: (Math.random() - 0.5) * 200,
+            opacity: 1,
+            scale: 2,
+            duration: 0.6,
+            ease: "power2.out",
+            delay: Math.random() * 0.8,
+            onComplete: () => star.remove()
+        });
+    }
+}
+
+// Función para crear efecto de velocidad de luz que preserva el fondo
+function createLightSpeedEffect() {
+    // Crear líneas de luz más sutiles
+    for (let i = 0; i < 15; i++) {
+        const line = document.createElement('div');
+        line.className = 'light-speed-line';
+        line.style.cssText = `
+            position: fixed;
+            width: 1px;
+            height: 100vh;
+            background: linear-gradient(to bottom, transparent, rgba(255, 215, 0, 0.6), transparent);
+            left: ${Math.random() * 100}%;
+            top: -100vh;
+            pointer-events: none;
+            z-index: 998;
+            opacity: 0;
+        `;
+        
+        document.body.appendChild(line);
+        
+        // Animación más sutil
+        gsap.to(line, {
+            top: '100vh',
+            opacity: 1,
+            duration: 1.2,
+            ease: "power2.out",
+            delay: Math.random() * 0.8,
+            onComplete: () => line.remove()
+        });
+    }
+    
+    // Crear estrellas de luz más sutiles
+    for (let i = 0; i < 20; i++) {
+        const star = document.createElement('div');
+        star.className = 'light-speed-star';
+        star.style.cssText = `
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            pointer-events: none;
+            z-index: 997;
+            opacity: 0;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        `;
+        
+        document.body.appendChild(star);
+        
+        // Animación más sutil
+        gsap.to(star, {
+            x: (Math.random() - 0.5) * 150,
+            y: (Math.random() - 0.5) * 150,
+            opacity: 1,
+            scale: 1.5,
+            duration: 1,
+            ease: "power2.out",
+            delay: Math.random() * 1,
+            onComplete: () => star.remove()
+        });
+    }
+}
+
+// Función para crear partículas de luz desde la estrella clickeada
+function createLightParticles(starElement) {
+    const rect = starElement.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'light-particle';
+        particle.style.cssText = `
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ffd700 0%, #ff6b6b 50%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            left: ${centerX}px;
+            top: ${centerY}px;
+        `;
+        
+        document.body.appendChild(particle);
+        
+        // Animación de la partícula
+        gsap.to(particle, {
+            x: (Math.random() - 0.5) * 400,
+            y: (Math.random() - 0.5) * 400,
+            opacity: 0,
+            scale: 0,
+            duration: 1.5,
+            ease: "power2.out",
+            delay: Math.random() * 0.3
+        });
+    }
+}
+
+// Función para crear ondas de energía
+function createEnergyWaves(starElement) {
+    const rect = starElement.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    for (let i = 0; i < 3; i++) {
+        const wave = document.createElement('div');
+        wave.className = 'energy-wave';
+        wave.style.cssText = `
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffd700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            left: ${centerX - 10}px;
+            top: ${centerY - 10}px;
+            opacity: 0.8;
+        `;
+        
+        document.body.appendChild(wave);
+        
+        // Animación de la onda
+        gsap.to(wave, {
+            scale: 20,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out",
+            delay: i * 0.2,
+            onComplete: () => wave.remove()
         });
     }
 }
@@ -1261,18 +1694,61 @@ function showSection(sectionId) {
 document.addEventListener('DOMContentLoaded', function() {
   createStarField();
   
-  // Navegación por estrellas
+  // Navegación por estrellas con efectos de hover mejorados
   document.querySelectorAll('.star-nav-item').forEach(item => {
     item.addEventListener('click', function() {
       const sectionId = this.getAttribute('data-section');
-      showSection(sectionId);
+      
+      // Efecto de pulso en la estrella clickeada
+      gsap.to(this, {
+        scale: 1.5,
+        duration: 0.2,
+        ease: "power2.out",
+        yoyo: true,
+        repeat: 1
+      });
+      
+      // Efecto de carga antes de la transición
+      createLoadingEffect(this);
+      
+      // Pequeño delay para que se vea el efecto de carga
+      setTimeout(() => {
+        showSection(sectionId);
+      }, 300);
+    });
+    
+    // Efectos de hover mejorados
+    item.addEventListener('mouseenter', function() {
+      gsap.to(this, {
+        scale: 1.3,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+      
+      // Crear pequeñas partículas de hover
+      createHoverParticles(this);
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      gsap.to(this, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
     });
   });
   
-  // Animación inicial de las estrellas de navegación
+  // Animación inicial de las estrellas de navegación mejorada
   gsap.fromTo('.star-nav-item', 
-    { scale: 0, opacity: 0 },
-    { scale: 1, opacity: 1, duration: 1, stagger: 0.2, ease: "back.out(1.7)" }
+    { scale: 0, opacity: 0, rotation: 180 },
+    { 
+      scale: 1, 
+      opacity: 1, 
+      rotation: 0,
+      duration: 1.2, 
+      stagger: 0.3, 
+      ease: "back.out(1.7)" 
+    }
   );
 
   // Email Banner Logic
@@ -1319,6 +1795,103 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   });
 });
+
+// Función para crear partículas de hover
+function createHoverParticles(starElement) {
+    const rect = starElement.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'hover-particle';
+        particle.style.cssText = `
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            left: ${centerX}px;
+            top: ${centerY}px;
+        `;
+        
+        document.body.appendChild(particle);
+        
+        // Animación de la partícula de hover
+        gsap.to(particle, {
+            x: (Math.random() - 0.5) * 100,
+            y: (Math.random() - 0.5) * 100,
+            opacity: 0,
+            scale: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            delay: Math.random() * 0.2,
+            onComplete: () => particle.remove()
+        });
+    }
+}
+
+// Función para crear efecto de carga
+function createLoadingEffect(starElement) {
+    const rect = starElement.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Crear círculo de carga
+    const loadingCircle = document.createElement('div');
+    loadingCircle.className = 'loading-circle';
+    loadingCircle.style.cssText = `
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        border: 3px solid rgba(255, 215, 0, 0.3);
+        border-top: 3px solid #ffd700;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1001;
+        left: ${centerX - 30}px;
+        top: ${centerY - 30}px;
+        animation: spin 1s linear infinite;
+    `;
+    
+    document.body.appendChild(loadingCircle);
+    
+    // Crear anillos de expansión
+    for (let i = 0; i < 3; i++) {
+        const ring = document.createElement('div');
+        ring.className = 'loading-ring';
+        ring.style.cssText = `
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            left: ${centerX - 20}px;
+            top: ${centerY - 20}px;
+        `;
+        
+        document.body.appendChild(ring);
+        
+        // Animación del anillo
+        gsap.to(ring, {
+            scale: 3,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            delay: i * 0.2,
+            onComplete: () => ring.remove()
+        });
+    }
+    
+    // Remover el círculo de carga después de la animación
+    setTimeout(() => {
+        loadingCircle.remove();
+    }, 800);
+}
 </script>
 
 </body>
