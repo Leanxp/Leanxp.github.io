@@ -1399,8 +1399,8 @@ function showSection(sectionId) {
         // Efecto de viaje espacial desde el hero - mantener fondo visible
         tl.to(currentSectionEl, {
             opacity: 0,
-            scale: 2.5,
-            rotation: 360,
+            scale: 1.2, // Reducido de 2.5 para ser más sutil
+            rotation: 0, // Sin rotación, solo desvanecimiento
             duration: 1.2,
             ease: "power2.in"
         })
@@ -1419,7 +1419,7 @@ function showSection(sectionId) {
         }, "<0.4");
         
         // Efecto de velocidad de luz que preserva el fondo
-        createLightSpeedEffect();
+        // createLightSpeedEffect(); // Comentado para quitar las líneas amarillas
     } else {
         // Efecto de desvanecimiento galáctico para otras secciones
         tl.to(currentSectionEl, {
@@ -1437,12 +1437,12 @@ function showSection(sectionId) {
     }
 
     // Efecto de warp speed
-    createWarpSpeedEffect();
+    // createWarpSpeedEffect(); // Comentado para quitar las líneas amarillas
 
     // --- ANIMACIÓN DE ENTRADA ESPECTACULAR ---
     if (sectionId === 'hero') {
         // Regreso épico al hero - restaurar fondo gradualmente
-        gsap.set(newSectionEl, { opacity: 0, scale: 0.1, rotation: -360 });
+        gsap.set(newSectionEl, { opacity: 0, scale: 0.8, rotation: 0 }); // Sin rotación
         gsap.set(starField, { scale: 0.9, rotation: -45 }); // Mantener más visibilidad
         
         tl.to(newSectionEl, {
