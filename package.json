@@ -1,0 +1,20 @@
+{
+  "name": "leanxp-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio personal de Leandro Calvo Durán",
+  "scripts": {
+    "start": "http-server -p 8080 -o",
+    "dev": "http-server -p 8080 -o"
+  },
+  "keywords": [
+    "portfolio",
+    "cv",
+    "website"
+  ],
+  "author": "Leandro Calvo Durán",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
+
