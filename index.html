@@ -622,6 +622,114 @@
       font-weight: 300;
     }
 
+    /* Rocket */
+    .rocket {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .rocket-body {
+      font-size: 24px;
+      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+      animation: rocketGlow 2s ease-in-out infinite alternate;
+      transform-origin: center;
+    }
+
+    .rocket-trail {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), rgba(255, 107, 107, 0.4));
+      transform: translate(-50%, -50%) rotate(180deg);
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: trailPulse 1s ease-in-out infinite;
+    }
+
+    @keyframes rocketGlow {
+      0% {
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+        transform: scale(1);
+      }
+      100% {
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)) drop-shadow(0 0 25px rgba(255, 107, 107, 0.6));
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes trailPulse {
+      0%, 100% {
+        opacity: 0.6;
+        width: 20px;
+      }
+      50% {
+        opacity: 1;
+        width: 30px;
+      }
+    }
+
+    /* Skill Bubble */
+    .skill-bubble {
+      position: absolute;
+      transform: translate(-50%, -100%);
+      z-index: 15;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .skill-bubble.show {
+      opacity: 1;
+    }
+
+    .bubble-content {
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      border-radius: 12px;
+      padding: 6px 10px;
+      color: #ffd700;
+      font-size: 0.7rem;
+      font-weight: 500;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 215, 0, 0.3);
+      text-align: center;
+      min-width: 80px;
+      transition: opacity 0.2s ease;
+      opacity: 1;
+    }
+
+    .bubble-tail {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid rgba(255, 215, 0, 0.4);
+    }
+
+    .bubble-content::before {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 7px solid rgba(26, 26, 46, 0.95);
+    }
+
     /* Sección Contacto */
     .contact-section {
       width: 100%;
@@ -1293,7 +1401,7 @@
         <div class="experience-point" style="top: 70%; left: 65%;">
           <div class="experience-star"></div>
           <div class="experience-details">
-            <p class="experience-company">TRAMAS • 2025</p>
+            <p class="experience-company">TRAMAS • 2025 - 2025</p>
             <h3 class="experience-title">Data Engineer</h3>
           </div>
         </div>
@@ -1314,6 +1422,18 @@
             <p class="experience-company">Copyright (CCC) • 2022 - 2023</p>
             <h3 class="experience-title">Frontend Developer</h3>
           </div>
+        </div>
+
+        <!-- Rocket -->
+        <div class="rocket" id="experienceRocket">
+          <div class="rocket-body">🚀</div>
+          <div class="rocket-trail"></div>
+        </div>
+
+        <!-- Skill Bubble -->
+        <div class="skill-bubble" id="skillBubble">
+          <div class="bubble-content"></div>
+          <div class="bubble-tail"></div>
         </div>
       </div>
     </div>
@@ -1453,6 +1573,30 @@ function showSection(sectionId) {
             newSectionEl.classList.add('active');
             currentSection = sectionId;
             isAnimating = false;
+            
+            // Iniciar animación del cohete si se muestra la sección professional
+            if (sectionId === 'professional') {
+                // Pequeño delay para que la sección esté completamente visible
+                setTimeout(() => {
+                    animateRocket();
+                }, 500);
+            } else {
+                // Detener animación del cohete si se sale de la sección
+                if (rocketAnimation) {
+                    rocketAnimation.kill();
+                    rocketAnimation = null;
+                }
+                const rocket = document.getElementById('experienceRocket');
+                if (rocket) {
+                    gsap.to(rocket, { opacity: 0, duration: 0.3 });
+                }
+                // Ocultar el bocadillo de aptitudes
+                const skillBubble = document.getElementById('skillBubble');
+                if (skillBubble) {
+                    skillBubble.classList.remove('show');
+                    gsap.to(skillBubble, { opacity: 0, duration: 0.3 });
+                }
+            }
             
             // Limpiar partículas después de la animación
             setTimeout(() => {
@@ -1965,6 +2109,20 @@ document.addEventListener('DOMContentLoaded', function() {
           aboutBanner.classList.remove('show');
       }
   });
+
+  // Inicializar cohete como oculto
+  const rocket = document.getElementById('experienceRocket');
+  if (rocket) {
+    gsap.set(rocket, { opacity: 0 });
+  }
+
+  // Si la sección professional está activa al cargar, iniciar animación
+  const professionalSection = document.getElementById('professional');
+  if (professionalSection && professionalSection.classList.contains('active')) {
+    setTimeout(() => {
+      animateRocket();
+    }, 500);
+  }
 });
 
 // Función para crear partículas de hover
@@ -2062,6 +2220,251 @@ function createLoadingEffect(starElement) {
     setTimeout(() => {
         loadingCircle.remove();
     }, 800);
+}
+
+// Variable para almacenar la animación del cohete
+let rocketAnimation = null;
+
+// Función para animar el cohete siguiendo las líneas de experiencia
+function animateRocket() {
+    const rocket = document.getElementById('experienceRocket');
+    if (!rocket) return;
+
+    // Detener animación previa si existe
+    if (rocketAnimation) {
+        rocketAnimation.kill();
+        rocketAnimation = null;
+    }
+
+    // Mostrar el cohete
+    gsap.set(rocket, { opacity: 1 });
+
+    // Coordenadas de las experiencias (en porcentajes)
+    // El cohete despega desde Frontend Developer (más antiguo) hacia Data Manager (más reciente)
+    // Línea 1: (15%, 60%) -> (40%, 40%) - Frontend Developer a Data Analyst
+    // Línea 2: (40%, 40%) -> (65%, 70%) - Data Analyst a Data Engineer
+    // Línea 3: (65%, 70%) -> (85%, 30%) - Data Engineer a Data Manager
+
+    // Usar porcentajes directamente (orden invertido: desde la más antigua hasta la más reciente)
+    const points = [
+        { x: 15, y: 60 }, // Punto inicial: Frontend Developer (Copyright 2022-2023)
+        { x: 40, y: 40 }, // Punto 2: Data Analyst (Endesa 2023-2024)
+        { x: 65, y: 70 }, // Punto 3: Data Engineer (TRAMAS 2025)
+        { x: 85, y: 30 }  // Punto final: Data Manager (Endesa 2025-2026)
+    ];
+
+    // Función para calcular el ángulo entre dos puntos
+    // El emoji del cohete apunta hacia la derecha por defecto, así que ajustamos el ángulo
+    function calculateAngle(x1, y1, x2, y2) {
+        // Calcular el ángulo de la dirección del movimiento
+        const angleRad = Math.atan2(y2 - y1, x2 - x1);
+        // Convertir a grados y ajustar para que el cohete apunte correctamente
+        // El emoji 🚀 apunta hacia la derecha (0°), así que el ángulo calculado ya es correcto
+        return angleRad * (180 / Math.PI);
+    }
+
+    // Definir aptitudes para cada segmento (hasta 6 por segmento)
+    const skills = [
+        // Segmento 0: Frontend Developer -> Data Analyst
+        ['+ Javascript', '+ Ember JS', '+ Tailwind CSS', '+ Docker', '+ Jira', '+ Git', '+ SCRUM', '+ Waterfall', '+ Agile Methodologies'],
+        // Segmento 1: Data Analyst -> Data Engineer
+        ['+ AWS', '+ Amazon Redshift', '+ PostgreSQL', '+ CD/DI', '+ SAP', '+ Salesforce', '+ Power BI', '+ Qlik Sense', '+ Qlik View', '+ QMC', '+ Data Governance', '+ Dynatrace', '+ Python', '+ Power Platform', '+ Jira', '+ Waterfall' ],
+        // Segmento 2: Data Engineer -> Data Manager
+        ['+ Python', '+ Spark', '+ Prophet ', '+ Power BI', '+ MySQL', 'PostgreSQL', 'PL/SQL', '+ Data Governance', '+ Leadership', '+ Monitoring', '+ Full/Incremental/CD/DI', '+ Comerzzia', 'Odoo', '+ SAP', '+ Wordpress', '+ Shopify']
+    ];
+
+    // Función para animar el cohete
+    function animateRocketPath() {
+        const skillBubble = document.getElementById('skillBubble');
+        const bubbleContent = skillBubble ? skillBubble.querySelector('.bubble-content') : null;
+        
+        // Crear objeto de datos para la animación
+        const data = { progress: 0 };
+
+        const tl = gsap.timeline({
+            repeat: -1,
+            onUpdate: function() {
+                const progress = this.progress();
+                let currentSegment = 0;
+                let segmentProgress = 0;
+                
+                // Calcular el tiempo actual en el ciclo
+                const segmentDuration = 13.5;
+                const pauseDuration = 5.5;
+                const totalDuration = segmentDuration + pauseDuration;
+                const currentTime = progress * totalDuration;
+                
+                // Asegurar que el cohete esté visible al inicio de cada ciclo
+                if (progress < 0.01) {
+                    gsap.set(rocket, { opacity: 1 });
+                }
+
+                // Verificar si estamos en la pausa final (mostrando el mensaje)
+                const isInPause = currentTime >= segmentDuration;
+                
+                if (isInPause) {
+                    // Durante la pausa, mostrar solo el mensaje en la última posición
+                    const endPoint = points[3]; // Última experiencia
+                    
+                    // Ocultar el cohete
+                    gsap.set(rocket, {
+                        opacity: 0
+                    });
+
+                    // Mostrar el mensaje de reunión
+                    if (skillBubble && bubbleContent) {
+                        const meetingMessage = "Let's have a meeting ;)";
+                        
+                        if (bubbleContent.textContent !== meetingMessage) {
+                            bubbleContent.textContent = meetingMessage;
+                        }
+
+                        gsap.set(skillBubble, {
+                            left: endPoint.x + '%',
+                            top: (endPoint.y - 5) + '%',
+                            opacity: 1
+                        });
+
+                        skillBubble.classList.add('show');
+                    }
+                    return; // Salir temprano, no procesar movimiento del cohete
+                }
+
+                // Calcular el progreso normalizado solo para los segmentos (sin la pausa)
+                const normalizedProgress = currentTime / segmentDuration;
+
+                // Determinar en qué segmento estamos
+                if (normalizedProgress < 0.33) {
+                    currentSegment = 0;
+                    segmentProgress = normalizedProgress / 0.33;
+                } else if (normalizedProgress < 0.66) {
+                    currentSegment = 1;
+                    segmentProgress = (normalizedProgress - 0.33) / 0.33;
+                } else {
+                    currentSegment = 2;
+                    segmentProgress = (normalizedProgress - 0.66) / 0.34;
+                }
+
+                const startPoint = points[currentSegment];
+                const endPoint = points[currentSegment + 1];
+
+                // Calcular posición interpolada (en porcentajes)
+                const currentX = startPoint.x + (endPoint.x - startPoint.x) * segmentProgress;
+                const currentY = startPoint.y + (endPoint.y - startPoint.y) * segmentProgress;
+
+                // Calcular ángulo de rotación
+                // El emoji 🚀 apunta hacia la derecha por defecto
+                // El segmento 1 (Data Analyst -> Data Engineer) funciona bien sin ajuste
+                let angle = calculateAngle(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+                
+                // Ajustar el ángulo según el segmento
+                // Segmento 0: necesita rotación adicional
+                // Segmento 1: funciona bien sin ajuste
+                // Segmento 2: necesita rotación adicional
+                if (currentSegment === 0) {
+                    // Segmento 0: Frontend Developer -> Data Analyst
+                    angle = angle + 70;
+                } else if (currentSegment === 2) {
+                    // Segmento 2: Data Engineer -> Data Manager
+                    angle = angle + 90;
+                }
+                // Segmento 1 no necesita ajuste
+
+                // Comportamiento normal: mostrar cohete y aptitudes
+                gsap.set(rocket, {
+                    left: currentX + '%',
+                    top: currentY + '%',
+                    rotation: angle,
+                    opacity: 1
+                });
+
+                // Mostrar aptitudes en el bocadillo
+                if (skillBubble && bubbleContent) {
+                    // Calcular qué aptitud mostrar según el progreso del segmento
+                    const currentSkills = skills[currentSegment];
+                    // Dividir el segmento en partes iguales para cada aptitud
+                    const skillsPerSegment = currentSkills.length;
+                    const skillProgress = segmentProgress * skillsPerSegment;
+                    const skillIndex = Math.floor(skillProgress);
+                    const skillToShow = currentSkills[Math.min(skillIndex, skillsPerSegment - 1)];
+
+                    // Actualizar el contenido del bocadillo solo si cambió
+                    if (bubbleContent.textContent !== skillToShow) {
+                        // Efecto de fade al cambiar la aptitud
+                        gsap.to(bubbleContent, {
+                            opacity: 0,
+                            duration: 0.2,
+                            onComplete: () => {
+                                bubbleContent.textContent = skillToShow;
+                                gsap.to(bubbleContent, {
+                                    opacity: 1,
+                                    duration: 0.2
+                                });
+                            }
+                        });
+                    }
+
+                    // Posicionar el bocadillo encima del cohete
+                    // Ajustar posición según la dirección del movimiento
+                    const offsetX = Math.cos((angle * Math.PI) / 180) * 2;
+                    const offsetY = Math.sin((angle * Math.PI) / 180) * 2;
+                    
+                    gsap.set(skillBubble, {
+                        left: (currentX + offsetX) + '%',
+                        top: (currentY - 5 + offsetY) + '%', // 5% arriba del cohete
+                        opacity: 1
+                    });
+
+                    // Mostrar el bocadillo
+                    skillBubble.classList.add('show');
+                }
+            }
+        });
+
+        // Animar el objeto de datos para controlar el progreso
+        // Duración de los 3 segmentos: 13.5 segundos
+        // Pausa al final para mostrar el mensaje: 5.5 segundos
+        // Duración total: 19 segundos
+        const segmentDuration = 13.5;
+        const pauseDuration = 5.5;
+        const totalDuration = segmentDuration + pauseDuration;
+        
+        tl.to(data, {
+            progress: 1,
+            duration: totalDuration, // Duración total incluyendo pausa
+            ease: "none"
+        });
+
+        return tl; // Devolver la timeline para poder controlarla
+    }
+
+    // Inicializar posición del cohete (usando porcentajes)
+    // Segmento 0 necesita ajuste de +70
+    let initialAngle = calculateAngle(points[0].x, points[0].y, points[1].x, points[1].y) + 70;
+    gsap.set(rocket, {
+        left: points[0].x + '%',
+        top: points[0].y + '%',
+        rotation: initialAngle
+    });
+
+    // Inicializar el bocadillo
+    const skillBubble = document.getElementById('skillBubble');
+    const bubbleContent = skillBubble ? skillBubble.querySelector('.bubble-content') : null;
+    if (skillBubble && bubbleContent) {
+        bubbleContent.textContent = skills[0][0]; // Primera aptitud del primer segmento
+        gsap.set(skillBubble, {
+            left: points[0].x + '%',
+            top: (points[0].y - 3) + '%',
+            opacity: 1
+        });
+        skillBubble.classList.add('show');
+    }
+
+    // Iniciar animación y guardar referencia
+    rocketAnimation = animateRocketPath();
+
+    // Actualizar posición cuando cambia el tamaño de la ventana
+    // No es necesario recalcular ya que usamos porcentajes
 }
 </script>
 
